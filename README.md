@@ -85,28 +85,8 @@
     Flask==2.3.2
     psycopg2-binary==2.9.6
 
-# Build the Flask App Image
+- ## Build the Flask App Image
     podman build -t ecommerce-web -f Dockerfile .
-
-# Create & Run PostgreSQL Container
-    podman run -d \
-      --name ecommerce-db \
-      -e POSTGRES_DB=ecommerce \
-      -e POSTGRES_USER=postgres \
-      -e POSTGRES_PASSWORD=postgres \
-      -v ecommerce-data:/var/lib/postgresql/data \
-      -p 5432:5432 \
-      postgres:14-alpine
-
-# Add table to the Database
-    podman exec -it ecommerce-db psql -U postgres -d ecommerce
-
-    CREATE TABLE IF NOT EXISTS products (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100),
-    description TEXT,
-    price NUMERIC
-    );
 
 # Run the Flask App Container
     podman run -d \
@@ -117,6 +97,25 @@
       --env DB_USER=postgres \
       --env DB_PASSWORD=postgres \
       ecommerce-web
+# Create & Run PostgreSQL Container
+    podman run -d \
+      --name ecommerce-db \
+      -e POSTGRES_DB=ecommerce \
+      -e POSTGRES_USER=postgres \
+      -e POSTGRES_PASSWORD=postgres \
+      -v ecommerce-data:/var/lib/postgresql/data \
+      -p 5432:5432 \
+      postgres:14-alpine
+
+# Add Table to the Database
+    podman exec -it ecommerce-db psql -U postgres -d ecommerce
+
+    CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    description TEXT,
+    price NUMERIC
+    );
 
 # Access the Web
     podman logs ecommerce-web
