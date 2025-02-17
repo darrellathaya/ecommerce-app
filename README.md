@@ -81,10 +81,9 @@
         app.run(host='0.0.0.0', port=5000)
 
 ## Create requirements.txt
-    Insert:5
-    
     Flask==2.3.2
     psycopg2-binary==2.9.6
+    
 ## Build the Flask App Image
     podman build -t ecommerce-web -f Dockerfile .
 
