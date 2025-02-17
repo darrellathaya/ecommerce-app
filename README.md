@@ -7,14 +7,15 @@
             │   index.html
             │   add_product.html
 
-# Install Dependencies
+# Flask-App Container
+## Install Dependencies
     sudo dnf install -y podman podman-compose python3 python3-pip
     '
-# Set Up the Project Directory
+## Set Up the Project Directory
     mkdir -p ecommerce-app/app/templates
     cd ecommerce-app
 
-# Create the Dockerfile
+## Create the Dockerfile
     # Use the official Python image
     FROM python:3.9-slim
     
@@ -33,7 +34,7 @@
     # Start the Flask application
     CMD ["python3", "main.py"]
 
-# Create main.py
+## Create main.py
     from flask import Flask, render_template, request, redirect, url_for
     import psycopg2
     import os
@@ -79,16 +80,15 @@
     if __name__ == '__main__':
         app.run(host='0.0.0.0', port=5000)
 
-# Create requirements.txt
+## Create requirements.txt
     Insert:5
     
     Flask==2.3.2
     psycopg2-binary==2.9.6
-
-- ## Build the Flask App Image
+## Build the Flask App Image
     podman build -t ecommerce-web -f Dockerfile .
 
-# Run the Flask App Container
+## Run the Flask App Container
     podman run -d \
       --name ecommerce-web \
       -p 5000:5000 \
@@ -97,7 +97,9 @@
       --env DB_USER=postgres \
       --env DB_PASSWORD=postgres \
       ecommerce-web
-# Create & Run PostgreSQL Container
+
+# PostgreSQL Container
+## Create & Run PostgrSQL Container
     podman run -d \
       --name ecommerce-db \
       -e POSTGRES_DB=ecommerce \
@@ -107,7 +109,7 @@
       -p 5432:5432 \
       postgres:14-alpine
 
-# Add Table to the Database
+## Add Table to the Database
     podman exec -it ecommerce-db psql -U postgres -d ecommerce
 
     CREATE TABLE IF NOT EXISTS products (
