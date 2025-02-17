@@ -7,6 +7,15 @@
             │   index.html
             │   add_product.html
 
+
+
+
+
+
+
+
+
+
 # Flask-App Container
 ## Install Dependencies
     sudo dnf install -y podman podman-compose python3 python3-pip
