@@ -119,9 +119,5 @@
     price NUMERIC
     );
 
-# Access the Web
+# 4. Access the Web
     podman logs ecommerce-web
-
-
-
-    
