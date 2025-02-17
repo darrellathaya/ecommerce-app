@@ -1,4 +1,4 @@
-# Project Structure
+# - Project Structure
     ecommerce-app/
     │   Dockerfile
     │   main.py
