@@ -10,7 +10,7 @@
 # 2. Flask-App Container
 ## Install Dependencies
     sudo dnf install -y podman podman-compose python3 python3-pip
-    '
+    
 ## Set Up the Project Directory
     mkdir -p ecommerce-app/app/templates
     cd ecommerce-app
