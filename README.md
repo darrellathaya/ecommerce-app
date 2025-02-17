@@ -1,4 +1,4 @@
-# - Project Structure
+# 1. Project Structure
     ecommerce-app/
     │   Dockerfile
     │   main.py
@@ -7,16 +7,7 @@
             │   index.html
             │   add_product.html
 
-
-
-
-
-
-
-
-
-
-# Flask-App Container
+# 2. Flask-App Container
 ## Install Dependencies
     sudo dnf install -y podman podman-compose python3 python3-pip
     '
@@ -107,7 +98,7 @@
       --env DB_PASSWORD=postgres \
       ecommerce-web
 
-# PostgreSQL Container
+# 3. PostgreSQL Container
 ## Create & Run PostgrSQL Container
     podman run -d \
       --name ecommerce-db \
