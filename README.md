@@ -7,6 +7,38 @@
             │   index.html
             │   add_product.html
 
+
+    webserver_simple/
+    │   deploy.yml
+    │   hosts.ini
+    └───roles/
+            └───common/
+                └───tasks/
+            |       | main.yml
+            └───web/
+            |   └───tasks/
+            |   |   | create_app.py.yml
+            |   |   | create_blog.db.yml
+            |   |   | create_create.html.yml
+            |   |   | create_dir.yml
+            |   |   | create_dockerfile.yml
+            |   |   | create_index.html.yml
+            |   |   | create_requirements.txt.yml
+            |   |   | main.yml
+            |   |   | run_webserver.yml
+            |   └───templates/
+            |       | Dockerfile.j2
+            |       | app.py.j2
+            |       | blog.db.j2
+            |       | create.html.j2
+            |       | index.html.j2
+            |       | create_index.html.yml
+            |       | requirements.txt.j2
+            └───db/
+                └───tasks/
+                    | main.yml
+            
+
 # 2. Flask-App Container
 ## Install Dependencies
     sudo dnf install -y podman podman-compose python3 python3-pip
